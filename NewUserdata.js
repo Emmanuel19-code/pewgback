@@ -33,7 +33,7 @@ const upload = multer({
 const NewUserData = async (req, res) => {
   const {
     firstName,
-    lastName,
+    otherName,
     email,
     phone,
     gender,
@@ -51,7 +51,7 @@ const NewUserData = async (req, res) => {
   // Validate required fields
   const requiredFields = {
     firstName,
-    lastName,
+    otherName,
     email,
     phone,
     gender,
@@ -91,8 +91,8 @@ const NewUserData = async (req, res) => {
       }
 
       const [existingName] = await connection.query(
-        'SELECT * FROM users3 WHERE firstname = ? AND lastname = ?',
-        [firstName, lastName]
+        'SELECT * FROM users3 WHERE firstname = ? AND otherName = ?',
+        [firstName, otherName]
       );
       if (existingName.length) {
         connection.release();
@@ -107,8 +107,8 @@ const NewUserData = async (req, res) => {
 
       // Insert into tables
       await connection.query(
-        'INSERT INTO users3 (name, firstname, lastname, gender, mobilephonenumber, email, secret) VALUES (?, ?, ?, ?, ?, ?, ?)',
-        [firstName, firstName, lastName, gender, phone, email, secret]
+        'INSERT INTO users3 (name, firstname, otherName, gender, mobilephonenumber, email, secret) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        [firstName, firstName, otherName, gender, phone, email, secret]
       );
 
       await connection.query(
