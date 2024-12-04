@@ -1,12 +1,13 @@
-CREATE TABLE IF NOT EXISTS users1 (
+CREATE TABLE IF NOT EXISTS users3 (
             id INT AUTO_INCREMENT PRIMARY KEY,
-            title VARCHAR(50) ,
+            title VARCHAR(50),
             name VARCHAR(255) NOT NULL,
             firstname VARCHAR(255),
             lastname VARCHAR(255),
+            othername VARCHAR(255),
             gender VARCHAR(50),
             mobilephonenumber VARCHAR(15),
-            password VARCHAR(255) ,
+            password VARCHAR(255),
             email VARCHAR(255) NOT NULL UNIQUE,
             verifiedcode VARCHAR(50),
             userlog TEXT,

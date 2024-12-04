@@ -34,6 +34,7 @@ const NewUserData = async (req, res) => {
   const {
     firstName,
     otherName,
+    lastName,
     email,
     phone,
     gender,
@@ -51,8 +52,7 @@ const NewUserData = async (req, res) => {
   // Validate required fields
   const requiredFields = {
     firstName,
-    otherName,
-    email,
+    lastName,
     phone,
     gender,
     selectedArea,
@@ -91,7 +91,7 @@ const NewUserData = async (req, res) => {
       }
 
       const [existingName] = await connection.query(
-        'SELECT * FROM users3 WHERE firstname = ? AND otherName = ?',
+        'SELECT * FROM users3 WHERE firstname = ? AND lastname = ?',
         [firstName, otherName]
       );
       if (existingName.length) {
@@ -107,8 +107,8 @@ const NewUserData = async (req, res) => {
 
       // Insert into tables
       await connection.query(
-        'INSERT INTO users3 (name, firstname, otherName, gender, mobilephonenumber, email, secret) VALUES (?, ?, ?, ?, ?, ?, ?)',
-        [firstName, firstName, otherName, gender, phone, email, secret]
+        'INSERT INTO users3 (name, firstname, lastName, otherName, gender, mobilephonenumber, email, secret) VALUES (?,?, ?, ?, ?, ?, ?, ?)',
+        [firstName, firstName,lastName, otherName, gender, phone, email, secret]
       );
 
       await connection.query(

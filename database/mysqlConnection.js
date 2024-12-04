@@ -36,6 +36,7 @@ const MysqlConnection = () => {
             title VARCHAR(50),
             name VARCHAR(255) NOT NULL,
             firstname VARCHAR(255),
+            lastname VARCHAR(255),
             othername VARCHAR(255),
             gender VARCHAR(50),
             mobilephonenumber VARCHAR(15),
